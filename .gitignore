@@ -1,5 +1,5 @@
 .ipynb_checkpoints
 _unsloth_temporary_saved_buffers
-pdf/*
+pdf/*.pdf
 .env
 venv
