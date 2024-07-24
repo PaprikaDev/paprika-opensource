@@ -2,4 +2,5 @@
 _unsloth_temporary_saved_buffers
 pdf/*.pdf
 .env
+.DS_Store
 venv
