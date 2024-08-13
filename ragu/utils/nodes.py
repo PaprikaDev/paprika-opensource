@@ -1,3 +1,6 @@
+from state import AgentState
+from langchain_core.messages import SystemMessage, ToolMessage
+
 def exists_record(self, state: AgentState):
         # if the current menu is already in the vector database
         # move to the augmentation step 

@@ -8,6 +8,7 @@ from langchain_pinecone import PineconeVectorStore
 from bs4 import BeautifulSoup
 from PyPDF2 import PdfReader
 import requests
+import urllib
 
 search_tool = TavilySearchResults()
 
@@ -75,7 +76,7 @@ class DownloadInput(BaseModel):
 @tool("download-pdf", args_schema=DownloadInput, return_direct=True)
 def download_pdf(download_url: str, filename: str):
     """Download a pdf file from a given url and filename"""
-    response = urlopen(download_url)
+    response = urllib.urlopen(download_url)
     file = open("static/"+filename+".pdf", 'wb')
     file.write(response.read())
     file.close()
