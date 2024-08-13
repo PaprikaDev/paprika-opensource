@@ -1,4 +1,4 @@
-from state import AgentState
+from ragu.utils.state import AgentState
 from langchain_core.messages import SystemMessage, ToolMessage
 
 def exists_record(self, state: AgentState):

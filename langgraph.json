@@ -1,10 +1,13 @@
 {
-    "dependencies": [
-        "langchain_openai",
-        "."
-    ],
-    "graphs": {
-        "my_graph_id": "./ragu/ragu.py:graph"
-    },
-    "env": "./.env"
+  "python_version": "3.11",
+  "dockerfile_lines": [],
+  "dependencies": [
+    "langchain_openai",
+    ".",
+    "langchain"
+  ],
+  "graphs": {
+    "my_graph_id": "./ragu/ragu.py:graph"
+  },
+  "env": "./.env"
 }

@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, END
-from utils.state import AgentState
-from utils.nodes import openai_inference_scrape, openai_inference_generate, call_tool, requires_tool, exists_record
-from utils.tools import tools
+from ragu.utils.state import AgentState
+from ragu.utils.nodes import openai_inference_scrape, openai_inference_generate, call_tool, requires_tool, exists_record
+from ragu.utils.tools import tools
 
 graph = StateGraph(AgentState)
 
