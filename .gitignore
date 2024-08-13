@@ -1,6 +1,6 @@
 .ipynb_checkpoints
 _unsloth_temporary_saved_buffers
-pdf/*.pdf
+static/*.pdf
 .env
 .DS_Store
 venv

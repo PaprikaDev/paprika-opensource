@@ -76,7 +76,7 @@ class DownloadInput(BaseModel):
 def download_pdf(download_url: str, filename: str):
     """Download a pdf file from a given url and filename"""
     response = urlopen(download_url)
-    file = open("pdf/"+filename+".pdf", 'wb')
+    file = open("static/"+filename+".pdf", 'wb')
     file.write(response.read())
     file.close()
 
