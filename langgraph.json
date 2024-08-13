@@ -1,0 +1,10 @@
+{
+    "dependencies": [
+        "langchain_openai",
+        "."
+    ],
+    "graphs": {
+        "my_graph_id": "./ragu/ragu.py:graph"
+    },
+    "env": "./.env"
+}

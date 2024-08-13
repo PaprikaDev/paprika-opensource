@@ -4,4 +4,3 @@ pdf/*.pdf
 .env
 .DS_Store
 venv
-langgraph.json
