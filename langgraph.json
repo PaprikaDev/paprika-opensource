@@ -2,12 +2,21 @@
   "python_version": "3.11",
   "dockerfile_lines": [],
   "dependencies": [
+    "langgraph",
+    "langchain",
     "langchain_openai",
-    ".",
-    "langchain"
+    "langchain_core",
+    "langchain_community",
+    "langchain_experimental",
+    "langchain_pinecone",
+    "pinecone",
+    "bs4",
+    "PyPDF2",
+    "requests",
+    "."
   ],
   "graphs": {
-    "my_graph_id": "./ragu/ragu.py:graph"
+    "ragu": "./ragu/ragu.py:graph"
   },
   "env": "./.env"
 }
