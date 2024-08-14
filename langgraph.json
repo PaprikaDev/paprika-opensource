@@ -16,7 +16,7 @@
     "."
   ],
   "graphs": {
-    "ragu": "./ragu/ragu.py:graph"
+    "ragu": "./ragu/ragu.py:ragu"
   },
   "env": "./.env"
 }
