@@ -1,7 +1,7 @@
 from ragu.utils.state import AgentState
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import RemoveMessage
-from tools import tools
+from ragu.utils.tools import tools
 
 model = ChatOpenAI(
     model="gpt-4o",

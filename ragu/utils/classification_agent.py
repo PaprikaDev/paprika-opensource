@@ -1,8 +1,7 @@
 
 from ragu.utils.state import AgentState
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import RemoveMessage
-from tools import tools
+from ragu.utils.tools import tools
 
 generation_prompt = """
     You are tasked with classifying if a resturant's menu fits a user's diet types. 
@@ -38,7 +37,7 @@ def GetDietTypes():
        diets = ["Vegan", "Vegetarian"]
        return diets 
 
-def openai_inference_generate(self, state: AgentState):
+def openai_inference_generate(state: AgentState):
     menu = GetMenu()
     diet_types = GetDietTypes()
     
