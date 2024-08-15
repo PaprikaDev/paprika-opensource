@@ -1,6 +1,7 @@
 from ragu.utils.state import AgentState
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import RemoveMessage
+from tools import tools
 
 model = ChatOpenAI(
     model="gpt-4o",
@@ -8,6 +9,8 @@ model = ChatOpenAI(
     max_tokens=None,
     timeout=None,
 )
+
+model.bind_tools(tools)
 
 retrieval_prompt = """
 You are tasked with searching for a given restaurant menu, downloading the menu, and the upserting the menu to a vector database. 
@@ -25,7 +28,7 @@ def openai_inference_scrape(state: AgentState):
     messages = [
         {"role": "system", "context": retrieval_prompt}
     ] + state['messages']
-    
+
     response = model.invoke(messages)
     if len(response.tool_calls) == 0:
         return {'messages': [response]}
