@@ -2,22 +2,6 @@ from langchain_core.messages import SystemMessage, ToolMessage
 from ragu.utils.tools import tools
 from langgraph.prebuilt import ToolNode
 
-generation_prompt = """
-You are tasked with classifying if a resturant's menu fits a user's diet types. 
-----------
-MENU:
-{MENU}
----------
-Diet Types:
-{DIETTYPE}
----------
-"""
-
-# def exists_record(state):
-#         # if the current menu is already in the vector database
-#         # move to the augmentation step 
-#         return False
-
 # Check if llm requires action 
 def requires_tool(state):
     messages = state["messages"]
