@@ -1,6 +1,6 @@
-from typing import TypedDict, Annotated
-from langchain_core.messages import AnyMessage
-import operator
+from langgraph.graph import add_messages
+from langchain_core.messages import BaseMessage
+from typing import TypedDict, Annotated, Sequence
 
 class AgentState(TypedDict):
-    messages: Annotated[list[AnyMessage], operator.add]
+    messages: Annotated[Sequence[BaseMessage], add_messages]
