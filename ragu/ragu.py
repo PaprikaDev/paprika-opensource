@@ -2,8 +2,7 @@ from typing import TypedDict, Literal
 
 from langgraph.graph import StateGraph, END, START
 from ragu.utils.state import AgentState
-from ragu.utils.nodes import openai_inference_scrape, call_tool, requires_tool, exists_record
-from ragu.utils.tools import tools
+from ragu.utils.nodes import openai_inference_scrape, call_tool, requires_tool
 
 graph = StateGraph(AgentState)
 
@@ -26,7 +25,7 @@ graph.add_edge(START, "scrape_llm")
 graph.add_conditional_edges(
     "scrape_llm",
     requires_tool,
-    {True: "action", False: END}
+    {"continue": "action", "end": END}
 )
 
 graph.add_edge("action", "scrape_llm")
