@@ -38,18 +38,18 @@ def scrape_pdf(url: str):
     except Exception as e:
         return f"Failed to scrape {url}. ERROR: {e}"
 
-@tool("scrape_text", args_schema=ScrapeInput, return_direct=True)
-def scrape_text(url: str):
-    """Scrape the text directly from a website."""
-    try:
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        for script in soup(["script", "style"]):
-            script.decompose()
-        text = '\n'.join(chunk for chunk in (phrase.strip() for line in (line.strip() for line in soup.get_text(separator=' ').splitlines()) for phrase in line.split("  ")) if chunk)
-        return text
-    except Exception as e:
-        return f"Failed to scrape {url}. ERROR: {e}"
+# @tool("scrape_text", args_schema=ScrapeInput, return_direct=True)
+# def scrape_text(url: str):
+#     """Scrape the text directly from a website."""
+#     try:
+#         response = requests.get(url)
+#         soup = BeautifulSoup(response.text, 'html.parser')
+#         for script in soup(["script", "style"]):
+#             script.decompose()
+#         text = '\n'.join(chunk for chunk in (phrase.strip() for line in (line.strip() for line in soup.get_text(separator=' ').splitlines()) for phrase in line.split("  ")) if chunk)
+#         return text
+#     except Exception as e:
+#         return f"Failed to scrape {url}. ERROR: {e}"
 
 class DownloadInput(BaseModel):
     download_url: str = Field(description="The URL of the menu pdf")
@@ -94,4 +94,4 @@ def upsert_pdf(file_path: str, restaurant_name: str, location: str):
     except Exception as e:
         return f"Failed to upsert PDF. ERROR: {e}"
 
-tools = [search_tool, scrape_pdf, scrape_text, download_pdf, upsert_pdf]
+tools = [search_tool, scrape_pdf, download_pdf, upsert_pdf]

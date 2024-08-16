@@ -1,13 +1,12 @@
 from langchain_core.messages import ToolMessage
+from langgraph.prebuilt import ToolNode
 from ragu.utils.tools import tools
-    
+
 # Run a tool ordered by the model
 def call_tool(state):
+    # Define a tool node
+    tool_node = ToolNode(tools)
+    # Define the tool calls
     tool_calls = state['messages'][-1].tool_calls
-    results = []
-    for t in tool_calls:
-        print(f"Calling: {t}")
-        result = tools[t['name']].invoke(t['args'])
-        results.append(ToolMessage(tool_call_id=t['id'], name=t['name'], content=str(result)))
-    print("Back to the model!")
-    return {'messages': results}
+    # Call the tools and return
+    return tool_node.invoke(tool_calls)

@@ -7,10 +7,14 @@ from ragu.utils.tool_call import call_tool
 from ragu.utils.retrieval_agent import openai_inference_scrape
 
 def route_toolcall(state: AgentState) -> Literal["Action", END]:
-    if state.get("requirements"):
+    messages = state["messages"]
+    last_message = messages[-1]
+    # If there are no tool calls, then we finish
+    if last_message.tool_calls:
         return "Action"
+    # Otherwise if there is, we continue
     else:
-        END
+        return END
 
 graph = StateGraph(AgentState, input=MessagesState, output=OutputState)
 graph.add_node("Retrieval", openai_inference_scrape)
