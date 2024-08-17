@@ -14,6 +14,10 @@ def route_toolcall(state: AgentState) -> Literal["Action", END]:
         return "Action"
     # Otherwise if there is, we continue
     else:
+        # arguments = last_message.tool_calls[0]["args"]
+        # # Can be used to map to gen node 
+        # if arguments.get("return_direct", False):
+        #     return END
         return END
 
 graph = StateGraph(AgentState, input=MessagesState, output=OutputState)

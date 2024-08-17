@@ -2,6 +2,7 @@ from langchain.tools import tool, Tool
 from langchain_community.tools import TavilySearchResults
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain.embeddings.openai import OpenAIEmbeddings
+from langgraph.prebuilt import ToolNode
 from langchain.pydantic_v1 import BaseModel, Field
 import pinecone
 from langchain.vectorstores import Pinecone as PineconeVectorStore
@@ -95,3 +96,4 @@ def upsert_pdf(file_path: str, restaurant_name: str, location: str):
         return f"Failed to upsert PDF. ERROR: {e}"
 
 tools = [search_tool, scrape_pdf, download_pdf, upsert_pdf]
+tool_node = ToolNode(tools)

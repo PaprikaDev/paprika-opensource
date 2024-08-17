@@ -41,13 +41,8 @@ def openai_inference_scrape(state: AgentState):
     response = agent_executor.invoke(
         {
             "input": messages[-1],
-            "chat_history": messages
+            "chat_history": messages,
         }
     )
-
-    if len(response.tool_calls) == 0:
-        return {'messages': [response]}
-    else:
-        requirements = response.tool_calls[0]['args']['requirements']
-        # delete_messages = [RemoveMessage(id=m.id) for m in state['messages']]
-        return {"requirements": requirements, "messages": messages + response}
+    
+    return {"messages": [response]}
